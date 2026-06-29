@@ -1,0 +1,3070 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aiyanna's 18th Birthday — Enchanted Garden Debut Invitation</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&display=swap" rel="stylesheet" />
+  
+  <!-- FontAwesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <style>
+    /* --- DESIGN SYSTEM & CSS VARIABLES --- */
+    :root {
+      --light-yellow: #FEF9E7;
+      --dusty-pink: #D4A5B8;
+      --sage-green: #8F9E8B;
+      --dusty-blue: #9CAEC0;
+      --white: #FFFFFF;
+      --soft-gold: #C5A880;
+      --gold-hover: #D4AF37;
+      --dark-charcoal: #2C2C2C;
+      
+      --font-cursive: 'Great Vibes', cursive;
+      --font-serif: 'Lora', serif;
+      --font-sans: 'Poppins', sans-serif;
+      
+      --glass-bg: rgba(255, 255, 255, 0.45);
+      --glass-border: rgba(255, 255, 255, 0.4);
+      --glass-shadow: 0 8px 32px rgba(143, 158, 139, 0.15);
+      
+      --transition-smooth: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+      --transition-quick: all 0.25s ease;
+    }
+
+    /* --- BASE RESET --- */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      background: linear-gradient(180deg, #FFFFFF 0%, #FEF9E7 40%, #F5EAEB 75%, #E6ECEF 100%);
+      color: var(--dark-charcoal);
+      font-family: var(--font-sans);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+      object-fit: cover;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    button {
+      cursor: pointer;
+      font-family: var(--font-sans);
+      border: none;
+      background: none;
+    }
+
+    section {
+      padding: clamp(4rem, 8vw, 8rem) clamp(1rem, 4vw, 2.5rem);
+      position: relative;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* --- DECORATIONS & UTILITIES --- */
+    .section-title {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 500;
+      text-align: center;
+      margin-bottom: 0.5rem;
+      position: relative;
+      color: var(--dark-charcoal);
+      opacity: 0;
+      transform: translateY(20px);
+      transition: var(--transition-smooth);
+    }
+
+    .section-subtitle {
+      font-family: var(--font-cursive);
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      color: var(--dusty-pink);
+      text-align: center;
+      margin-bottom: clamp(2rem, 6vw, 4.5rem);
+      opacity: 0;
+      transform: translateY(20px);
+      transition: var(--transition-smooth) 0.15s;
+    }
+
+    .section-title.revealed, .section-subtitle.revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .glass-card {
+      background: var(--glass-bg);
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      border: 1px solid var(--glass-border);
+      box-shadow: var(--glass-shadow);
+      border-radius: 20px;
+      padding: clamp(1.5rem, 4vw, 3rem);
+      transition: var(--transition-smooth);
+    }
+
+    .glass-card:hover {
+      box-shadow: 0 12px 40px rgba(212, 165, 184, 0.25);
+      border-color: rgba(255, 255, 255, 0.6);
+    }
+
+    /* Canvas overlay for floating petals */
+    #petal-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 999;
+    }
+
+    /* Gold scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: var(--light-yellow);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: var(--soft-gold);
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--gold-hover);
+    }
+
+    /* --- FLOATING HEADER NAVIGATION --- */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      padding: 1.25rem 2rem;
+      transition: var(--transition-smooth);
+    }
+
+    header.scrolled {
+      background: rgba(255, 255, 255, 0.75);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03);
+      padding: 0.8rem 2rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .nav-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-family: var(--font-cursive);
+      font-size: 2.2rem;
+      font-weight: 500;
+      color: var(--dark-charcoal);
+      transition: var(--transition-quick);
+    }
+
+    .logo:hover {
+      color: var(--dusty-pink);
+    }
+
+    .nav-menu {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .nav-link {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--dark-charcoal);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 0.5rem 0.25rem;
+      position: relative;
+      transition: var(--transition-quick);
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 1.5px;
+      background: var(--soft-gold);
+      transition: var(--transition-quick);
+    }
+
+    .nav-link:hover {
+      color: var(--soft-gold);
+    }
+
+    .nav-link:hover::after,
+    .nav-link.active::after {
+      width: 100%;
+    }
+
+    .nav-link.active {
+      color: var(--soft-gold);
+    }
+
+    .mobile-toggle {
+      display: none;
+      font-size: 1.5rem;
+      color: var(--dark-charcoal);
+    }
+
+    /* --- HERO SECTION --- */
+    .hero {
+      height: 100vh;
+      min-height: 600px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: var(--white);
+      padding: 0;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .hero-slideshow {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+    }
+
+    .hero-slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      opacity: 0;
+      transition: opacity 1.5s ease-in-out;
+    }
+
+    .hero-slide.active {
+      opacity: 1;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(180deg, rgba(44, 44, 44, 0.4) 0%, rgba(44, 44, 44, 0.7) 100%);
+      z-index: 2;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 3;
+      max-width: 800px;
+      padding: 2rem;
+    }
+
+    .hero-invitation {
+      font-family: var(--font-sans);
+      font-size: clamp(0.9rem, 2vw, 1.2rem);
+      font-weight: 300;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: heroReveal 1s forwards 0.5s;
+    }
+
+    .hero-title {
+      font-family: var(--font-cursive);
+      font-size: clamp(4.5rem, 12vw, 8rem);
+      color: var(--light-yellow);
+      text-shadow: 2px 4px 15px rgba(0, 0, 0, 0.3);
+      margin-bottom: 0.5rem;
+      line-height: 1.1;
+      opacity: 0;
+      transform: scale(0.9);
+      animation: heroRevealZoom 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.8s;
+    }
+
+    .hero-subtitle {
+      font-family: var(--font-serif);
+      font-size: clamp(1.2rem, 3.5vw, 2.2rem);
+      font-weight: 300;
+      letter-spacing: 0.15em;
+      margin-bottom: 3.5rem;
+      color: var(--dusty-pink);
+      text-transform: uppercase;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: heroReveal 1s forwards 1.2s;
+    }
+
+    .hero-meta {
+      display: flex;
+      justify-content: center;
+      gap: clamp(1.5rem, 5vw, 4rem);
+      margin-bottom: 3.5rem;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: heroReveal 1s forwards 1.5s;
+    }
+
+    .meta-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .meta-label {
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--dusty-blue);
+      margin-bottom: 0.5rem;
+    }
+
+    .meta-val {
+      font-family: var(--font-serif);
+      font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+      color: var(--white);
+      font-weight: 400;
+    }
+
+    .hero-scroll-btn {
+      display: inline-block;
+      color: var(--white);
+      font-size: 1.8rem;
+      margin-top: 1rem;
+      opacity: 0;
+      animation: heroReveal 1s forwards 1.8s, bounce 2s infinite;
+      transition: var(--transition-quick);
+    }
+
+    .hero-scroll-btn:hover {
+      color: var(--soft-gold);
+    }
+
+    /* --- ABOUT SECTION --- */
+    .about {
+      background: transparent;
+      z-index: 2;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .about-image-wrapper {
+      position: relative;
+      opacity: 0;
+      transform: translateX(-40px);
+      transition: var(--transition-smooth);
+    }
+
+    .about-image-wrapper.revealed {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .about-img-frame {
+      border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+      width: 100%;
+      height: 480px;
+      overflow: hidden;
+      border: 6px solid var(--white);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+      position: relative;
+      animation: morph 8s ease-in-out infinite;
+    }
+
+    .about-img-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .about-badge {
+      position: absolute;
+      bottom: -15px;
+      right: 15px;
+      background: var(--soft-gold);
+      color: var(--white);
+      padding: 1.25rem;
+      border-radius: 50%;
+      width: 100px;
+      height: 100px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-family: var(--font-serif);
+      box-shadow: 0 8px 20px rgba(197, 168, 128, 0.4);
+      transform: rotate(15deg);
+    }
+
+    .about-badge span:first-child {
+      font-size: 1.5rem;
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .about-badge span:last-child {
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .about-content {
+      opacity: 0;
+      transform: translateX(40px);
+      transition: var(--transition-smooth);
+    }
+
+    .about-content.revealed {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .about-cursive {
+      font-family: var(--font-cursive);
+      font-size: 2.8rem;
+      color: var(--dusty-pink);
+      margin-bottom: 0.5rem;
+    }
+
+    .about-title {
+      font-family: var(--font-serif);
+      font-size: clamp(2rem, 4vw, 3rem);
+      margin-bottom: 1.5rem;
+      line-height: 1.2;
+    }
+
+    .about-text {
+      color: var(--dark-charcoal);
+      opacity: 0.85;
+      font-size: 0.95rem;
+      margin-bottom: 1.5rem;
+      text-align: justify;
+    }
+
+    .about-highlight {
+      font-style: italic;
+      border-left: 3px solid var(--soft-gold);
+      padding-left: 1.5rem;
+      margin: 2rem 0;
+      font-size: 1.05rem;
+      color: #6a6a6a;
+    }
+
+    /* --- GALLERY SECTION --- */
+    .gallery {
+      background: transparent;
+    }
+
+    .gallery-masonry {
+      columns: 4 250px;
+      column-gap: 1.5rem;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: var(--transition-smooth);
+    }
+
+    .gallery-masonry.revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .gallery-item {
+      break-inside: avoid;
+      margin-bottom: 1.5rem;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+      border: 1px solid var(--glass-border);
+      position: relative;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: auto;
+      transition: var(--transition-smooth);
+    }
+
+    .gallery-item-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(44, 44, 44, 0.6);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      transition: var(--transition-quick);
+      z-index: 2;
+    }
+
+    .gallery-item-overlay i {
+      color: var(--white);
+      font-size: 2rem;
+      transform: scale(0.8);
+      transition: var(--transition-smooth);
+    }
+
+    .gallery-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(143, 158, 139, 0.3);
+      border-color: var(--soft-gold);
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.05);
+    }
+
+    .gallery-item:hover .gallery-item-overlay {
+      opacity: 1;
+    }
+
+    .gallery-item:hover .gallery-item-overlay i {
+      transform: scale(1);
+    }
+
+    /* Fallback image cards when file missing */
+    .img-fallback {
+      display: none;
+      width: 100%;
+      aspect-ratio: 3/4;
+      background: linear-gradient(135deg, var(--light-yellow), var(--dusty-pink), var(--dusty-blue));
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      color: var(--dark-charcoal);
+      padding: 1.5rem;
+      text-align: center;
+    }
+
+    .img-fallback i {
+      font-size: 2.2rem;
+      color: var(--soft-gold);
+      margin-bottom: 0.8rem;
+    }
+
+    .img-fallback span {
+      font-family: var(--font-cursive);
+      font-size: 1.6rem;
+      line-height: 1.2;
+    }
+
+    /* --- LIGHTBOX MODAL --- */
+    .lightbox {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.95);
+      z-index: 2000;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .lightbox.active {
+      display: flex;
+      opacity: 1;
+    }
+
+    .lightbox-content {
+      position: relative;
+      max-width: 90vw;
+      max-height: 85vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .lightbox-content img {
+      max-width: 100%;
+      max-height: 85vh;
+      border-radius: 8px;
+      box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: -45px;
+      right: 0;
+      color: var(--white);
+      font-size: 2rem;
+      transition: var(--transition-quick);
+    }
+
+    .lightbox-close:hover {
+      color: var(--dusty-pink);
+    }
+
+    .lightbox-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--white);
+      font-size: 2.5rem;
+      padding: 1rem;
+      transition: var(--transition-quick);
+      z-index: 2001;
+    }
+
+    .lightbox-nav:hover {
+      color: var(--dusty-pink);
+      transform: translateY(-50%) scale(1.1);
+    }
+
+    .lightbox-prev {
+      left: -80px;
+    }
+
+    .lightbox-next {
+      right: -80px;
+    }
+
+    /* --- VENUE SECTION --- */
+    .venue {
+      background: transparent;
+    }
+
+    .venue-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 3.5rem;
+      align-items: center;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: var(--transition-smooth);
+    }
+
+    .venue-grid.revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .venue-showcase {
+      position: relative;
+      border-radius: 24px;
+      overflow: hidden;
+      height: 450px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      border: 1px solid var(--glass-border);
+    }
+
+    .venue-slider {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      position: relative;
+    }
+
+    .venue-slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      transition: opacity 0.8s ease-in-out;
+    }
+
+    .venue-slide.active {
+      opacity: 1;
+    }
+
+    .venue-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .venue-slide-fallback {
+      display: none;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, var(--dusty-blue), var(--sage-green));
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      color: var(--white);
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .venue-slide-fallback i {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      color: var(--light-yellow);
+    }
+
+    .venue-slide-fallback h4 {
+      font-family: var(--font-serif);
+      font-size: 1.8rem;
+    }
+
+    .venue-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 45px;
+      height: 45px;
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(5px);
+      -webkit-backdrop-filter: blur(5px);
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: var(--dark-charcoal);
+      transition: var(--transition-quick);
+      z-index: 5;
+    }
+
+    .venue-btn:hover {
+      background: var(--white);
+      color: var(--dusty-pink);
+    }
+
+    .venue-btn-prev {
+      left: 15px;
+    }
+
+    .venue-btn-next {
+      right: 15px;
+    }
+
+    .venue-dots {
+      position: absolute;
+      bottom: 15px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 0.5rem;
+      z-index: 5;
+    }
+
+    .venue-dot {
+      width: 10px;
+      height: 10px;
+      background: rgba(255, 255, 255, 0.5);
+      border-radius: 50%;
+      transition: var(--transition-quick);
+    }
+
+    .venue-dot.active {
+      background: var(--white);
+      width: 25px;
+      border-radius: 5px;
+    }
+
+    .venue-details {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .venue-tag {
+      display: inline-block;
+      align-self: flex-start;
+      background: rgba(212, 165, 184, 0.15);
+      color: #b3728f;
+      padding: 0.4rem 1rem;
+      border-radius: 50px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .venue-name {
+      font-family: var(--font-serif);
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      color: var(--dark-charcoal);
+      line-height: 1.2;
+    }
+
+    .venue-desc {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+    }
+
+    .venue-info-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin: 0.5rem 0;
+    }
+
+    .venue-info-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      font-size: 0.95rem;
+    }
+
+    .venue-info-item i {
+      width: 38px;
+      height: 38px;
+      background: rgba(143, 158, 139, 0.12);
+      color: var(--sage-green);
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.05rem;
+      flex-shrink: 0;
+    }
+
+    /* Google Maps placeholder styling */
+    .map-placeholder {
+      width: 100%;
+      height: 220px;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid var(--glass-border);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+      position: relative;
+    }
+
+    .map-placeholder-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(156, 174, 192, 0.15);
+      background-image: radial-gradient(rgba(212, 170, 128, 0.1) 1.5px, transparent 1.5px);
+      background-size: 15px 15px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 1.5rem;
+    }
+
+    .map-placeholder-overlay i {
+      font-size: 2.2rem;
+      color: var(--dusty-pink);
+      margin-bottom: 0.8rem;
+    }
+
+    .map-placeholder-overlay h5 {
+      font-family: var(--font-serif);
+      font-size: 1.1rem;
+      margin-bottom: 0.4rem;
+      color: var(--dark-charcoal);
+    }
+
+    .map-placeholder-overlay p {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-bottom: 1.2rem;
+    }
+
+    .btn-map {
+      background: var(--white);
+      color: var(--soft-gold);
+      border: 1px solid var(--soft-gold);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 0.5rem 1.25rem;
+      border-radius: 50px;
+      transition: var(--transition-quick);
+    }
+
+    .btn-map:hover {
+      background: var(--soft-gold);
+      color: var(--white);
+      box-shadow: 0 4px 15px rgba(197, 168, 128, 0.3);
+    }
+
+    /* --- EVENT DETAILS --- */
+    .event-details {
+      background: transparent;
+    }
+
+    .details-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 2rem;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: var(--transition-smooth);
+    }
+
+    .details-grid.revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .details-card {
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .details-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, var(--light-yellow), var(--dusty-pink), var(--dusty-blue));
+    }
+
+    .details-icon {
+      width: 65px;
+      height: 65px;
+      background: var(--white);
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.6rem;
+      color: var(--dusty-pink);
+      margin: 0 auto 1.5rem;
+      box-shadow: 0 6px 15px rgba(212, 165, 184, 0.2);
+      border: 1px solid var(--glass-border);
+      transition: var(--transition-smooth);
+    }
+
+    .details-card:hover .details-icon {
+      transform: scale(1.1) rotate(10deg);
+      color: var(--soft-gold);
+      box-shadow: 0 6px 15px rgba(197, 168, 128, 0.3);
+    }
+
+    .details-card h4 {
+      font-family: var(--font-serif);
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--dark-charcoal);
+      margin-bottom: 0.8rem;
+      letter-spacing: 0.05em;
+    }
+
+    .details-card p {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      margin-bottom: 0.25rem;
+    }
+
+    .details-card p strong {
+      color: var(--dark-charcoal);
+    }
+
+    /* --- 18 TRADITIONS --- */
+    .traditions {
+      background: transparent;
+    }
+
+    .traditions-wrapper {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: var(--transition-smooth);
+    }
+
+    .traditions-wrapper.revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Accordion Item Styles */
+    .accordion-item {
+      background: var(--glass-bg);
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      border: 1px solid var(--glass-border);
+      box-shadow: var(--glass-shadow);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: var(--transition-smooth);
+    }
+
+    .accordion-item:hover {
+      box-shadow: 0 10px 25px rgba(212, 165, 184, 0.2);
+    }
+
+    .accordion-header {
+      width: 100%;
+      padding: 1.5rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      text-align: left;
+      font-size: 1.15rem;
+      font-weight: 500;
+      color: var(--dark-charcoal);
+      transition: var(--transition-quick);
+    }
+
+    .accordion-title {
+      font-family: var(--font-serif);
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+    }
+
+    .accordion-icon-box {
+      width: 42px;
+      height: 42px;
+      background: var(--white);
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: var(--dusty-pink);
+      font-size: 1.1rem;
+      box-shadow: 0 4px 10px rgba(212, 165, 184, 0.15);
+      border: 1px solid var(--glass-border);
+    }
+
+    .accordion-arrow {
+      font-size: 1rem;
+      color: var(--soft-gold);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .accordion-body {
+      padding: 0 2rem 2rem 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.15);
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .accordion-item.active {
+      border-color: var(--soft-gold);
+    }
+
+    .accordion-item.active .accordion-arrow {
+      transform: rotate(180deg);
+    }
+
+    /* Names Lists Grid */
+    .names-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.2rem;
+      padding-top: 1.5rem;
+    }
+
+    .name-item {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      font-size: 0.95rem;
+      color: var(--dark-charcoal);
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+
+    .accordion-item.active .name-item {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Staggered delay for list items reveal on accordion expand */
+    .name-item:nth-child(1) { transition-delay: 0.02s; }
+    .name-item:nth-child(2) { transition-delay: 0.04s; }
+    .name-item:nth-child(3) { transition-delay: 0.06s; }
+    .name-item:nth-child(4) { transition-delay: 0.08s; }
+    .name-item:nth-child(5) { transition-delay: 0.1s; }
+    .name-item:nth-child(6) { transition-delay: 0.12s; }
+    .name-item:nth-child(7) { transition-delay: 0.14s; }
+    .name-item:nth-child(8) { transition-delay: 0.16s; }
+    .name-item:nth-child(9) { transition-delay: 0.18s; }
+    .name-item:nth-child(10) { transition-delay: 0.2s; }
+    .name-item:nth-child(11) { transition-delay: 0.22s; }
+    .name-item:nth-child(12) { transition-delay: 0.24s; }
+    .name-item:nth-child(13) { transition-delay: 0.26s; }
+    .name-item:nth-child(14) { transition-delay: 0.28s; }
+    .name-item:nth-child(15) { transition-delay: 0.3s; }
+    .name-item:nth-child(16) { transition-delay: 0.32s; }
+    .name-item:nth-child(17) { transition-delay: 0.34s; }
+    .name-item:nth-child(18) { transition-delay: 0.36s; }
+
+    .name-number {
+      font-family: var(--font-serif);
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--soft-gold);
+      width: 25px;
+      height: 25px;
+      background: rgba(255, 255, 255, 0.7);
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-shrink: 0;
+      border: 1px solid var(--glass-border);
+    }
+
+    .name-text {
+      font-weight: 400;
+    }
+
+    /* --- DRESS CODE --- */
+    .dress-code {
+      background: transparent;
+      text-align: center;
+    }
+
+    .dress-code-card {
+      max-width: 800px;
+      margin: 0 auto;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: var(--transition-smooth);
+    }
+
+    .dress-code-card.revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .palette-container {
+      display: flex;
+      justify-content: center;
+      gap: clamp(1rem, 4vw, 2.5rem);
+      flex-wrap: wrap;
+      margin: 2.5rem 0;
+    }
+
+    .palette-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .palette-circle {
+      width: clamp(70px, 12vw, 90px);
+      height: clamp(70px, 12vw, 90px);
+      border-radius: 50%;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+      border: 4px solid var(--white);
+      transition: var(--transition-smooth);
+    }
+
+    .palette-circle:hover {
+      transform: scale(1.1) translateY(-5px);
+      box-shadow: 0 12px 25px rgba(0,0,0,0.12);
+    }
+
+    .pc-yellow { background-color: var(--light-yellow); border-color: #f1eddf; }
+    .pc-pink { background-color: var(--dusty-pink); }
+    .pc-green { background-color: var(--sage-green); }
+    .pc-blue { background-color: var(--dusty-blue); }
+
+    .palette-label {
+      font-size: 0.85rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--dark-charcoal);
+    }
+
+    .dress-code-text {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(1.05rem, 2.5vw, 1.35rem);
+      line-height: 1.5;
+      font-weight: 500;
+      color: #6a6a6a;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .dress-code-text strong {
+      color: var(--dark-charcoal);
+    }
+
+    /* --- SPECIAL NOTES --- */
+    .special-notes {
+      background: transparent;
+    }
+
+    .notes-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: var(--transition-smooth);
+    }
+
+    .notes-grid.revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .note-card {
+      display: flex;
+      gap: 1.5rem;
+      align-items: flex-start;
+    }
+
+    .note-icon-box {
+      width: 55px;
+      height: 55px;
+      background: var(--white);
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.4rem;
+      color: var(--soft-gold);
+      flex-shrink: 0;
+      box-shadow: 0 5px 15px rgba(197, 168, 128, 0.2);
+      border: 1px solid var(--glass-border);
+      transition: var(--transition-smooth);
+    }
+
+    .note-card:hover .note-icon-box {
+      transform: scale(1.1) translateY(-3px);
+      color: var(--dusty-pink);
+      box-shadow: 0 8px 20px rgba(212, 165, 184, 0.25);
+    }
+
+    .note-content h4 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--dark-charcoal);
+      margin-bottom: 0.5rem;
+    }
+
+    .note-content p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* --- RSVP SECTION --- */
+    .rsvp {
+      background: transparent;
+    }
+
+    .rsvp-card {
+      max-width: 700px;
+      margin: 0 auto;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: var(--transition-smooth);
+    }
+
+    .rsvp-card.revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .rsvp-form-container {
+      position: relative;
+    }
+
+    .rsvp-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      transition: opacity 0.4s ease;
+    }
+
+    .rsvp-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .form-group label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--dark-charcoal);
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      background: rgba(255, 255, 255, 0.6);
+      border: 1px solid var(--glass-border);
+      border-radius: 12px;
+      padding: 0.9rem 1.2rem;
+      font-family: var(--font-sans);
+      font-size: 0.95rem;
+      color: var(--dark-charcoal);
+      transition: var(--transition-quick);
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--soft-gold);
+      background: var(--white);
+      box-shadow: 0 4px 12px rgba(197, 168, 128, 0.15);
+    }
+
+    /* Error Validation styling */
+    .form-group.error input,
+    .form-group.error select,
+    .form-group.error textarea {
+      border-color: #e06d6d;
+      background: rgba(224, 109, 109, 0.05);
+    }
+
+    .error-msg {
+      font-size: 0.75rem;
+      color: #e06d6d;
+      display: none;
+      margin-top: 0.2rem;
+    }
+
+    .form-group.error .error-msg {
+      display: block;
+    }
+
+    .btn-rsvp {
+      align-self: center;
+      background: linear-gradient(135deg, var(--soft-gold), var(--gold-hover));
+      color: var(--white);
+      padding: 1rem 3rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border-radius: 50px;
+      box-shadow: 0 6px 20px rgba(197, 168, 128, 0.35);
+      transition: var(--transition-smooth);
+      margin-top: 1rem;
+    }
+
+    .btn-rsvp:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(197, 168, 128, 0.5);
+    }
+
+    /* RSVP Success Screen */
+    .rsvp-success {
+      display: none;
+      text-align: center;
+      padding: 2rem 0;
+      animation: fadeIn 0.8s ease forwards;
+    }
+
+    .success-icon {
+      width: 80px;
+      height: 80px;
+      background: rgba(143, 158, 139, 0.15);
+      color: var(--sage-green);
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 2.2rem;
+      margin: 0 auto 1.5rem;
+      border: 1px solid var(--glass-border);
+    }
+
+    .rsvp-success h3 {
+      font-family: var(--font-serif);
+      font-size: 1.8rem;
+      margin-bottom: 0.8rem;
+      color: var(--dark-charcoal);
+    }
+
+    .rsvp-success p {
+      font-size: 1rem;
+      color: var(--text-muted);
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    /* --- FOOTER --- */
+    footer {
+      background: linear-gradient(180deg, transparent 0%, rgba(212, 165, 184, 0.1) 100%);
+      padding: 4rem 2rem 3rem;
+      text-align: center;
+      border-top: 1px solid rgba(212, 165, 184, 0.15);
+    }
+
+    .footer-content {
+      max-width: 700px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .footer-divider {
+      width: 150px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--soft-gold), transparent);
+    }
+
+.footer-text {
+  font-family: var(--font-serif);
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  line-height: 1.6;
+
+  color: #d4af37;
+  font-style: italic;
+
+  text-align: center;
+  padding: 15px 20px;
+  margin: 10px auto;
+
+  max-width: 700px;
+
+  background: rgba(0, 0, 0, 0.35); /* soft glass/dark overlay */
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  border-radius: 12px;
+
+  backdrop-filter: blur(4px);
+
+  animation: goldGlow 2.5s infinite alternate;
+
+  text-shadow:
+    0 0 6px rgba(212, 175, 55, 0.4),
+    0 0 12px rgba(212, 175, 55, 0.3);
+}
+
+@keyframes goldGlow {
+  from {
+    text-shadow:
+      0 0 5px rgba(212, 175, 55, 0.4),
+      0 0 10px rgba(212, 175, 55, 0.3);
+  }
+  to {
+    text-shadow:
+      0 0 10px rgba(255, 215, 0, 0.8),
+      0 0 20px rgba(255, 215, 0, 0.6),
+      0 0 30px rgba(255, 215, 0, 0.4);
+  }
+}
+
+    .footer-crown {
+      font-family: var(--font-cursive);
+      font-size: 2.5rem;
+      color: var(--dusty-pink);
+    }
+
+.copyright {
+  font-size: 0.75rem;
+  color: rgba(212, 175, 55, 0.75); /* soft gold */
+  margin-top: 1rem;
+  letter-spacing: 0.12em;
+
+  text-align: center;
+  font-family: var(--font-serif);
+
+  opacity: 0.9;
+
+  padding-top: 10px;
+  border-top: 1px solid rgba(212, 175, 55, 0.25);
+}
+
+    /* --- KEYFRAME ANIMATIONS --- */
+    @keyframes heroReveal {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes heroRevealZoom {
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+      }
+      40% {
+        transform: translateY(-10px);
+      }
+      60% {
+        transform: translateY(-5px);
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: scale(0.95);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    @keyframes morph {
+      0% {
+        border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+      }
+      50% {
+        border-radius: 70% 30% 30% 70% / 70% 70% 30% 30%;
+      }
+      100% {
+        border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+      }
+    }
+
+    /* --- RESPONSIVE MEDIA QUERIES --- */
+    @media (max-width: 992px) {
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+      .about-image-wrapper {
+        order: 1;
+        max-width: 480px;
+        margin: 0 auto;
+      }
+      .about-img-frame {
+        height: 380px;
+      }
+      .about-content {
+        order: 2;
+      }
+      .venue-grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+      .venue-showcase {
+        height: 380px;
+      }
+      .lightbox-prev {
+        left: 20px;
+      }
+      .lightbox-next {
+        right: 20px;
+      }
+      .lightbox-nav {
+        font-size: 2rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      header {
+        padding: 1rem 1.5rem;
+      }
+      header.scrolled {
+        padding: 0.7rem 1.5rem;
+      }
+      .mobile-toggle {
+        display: block;
+      }
+      .nav-menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 75%;
+        max-width: 320px;
+        height: 100vh;
+        background: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(25px);
+        -webkit-backdrop-filter: blur(25px);
+        box-shadow: -5px 0 30px rgba(0, 0, 0, 0.05);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+        transition: var(--transition-smooth);
+        z-index: 1001;
+      }
+      .nav-menu.open {
+        right: 0;
+      }
+      .nav-link {
+        font-size: 1rem;
+      }
+      .hero-meta {
+        flex-direction: column;
+        gap: 1.5rem;
+        margin-bottom: 2.5rem;
+      }
+      .rsvp-row {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+      .notes-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      .accordion-header {
+        padding: 1.25rem 1.5rem;
+      }
+      .accordion-body {
+        padding: 0 1.5rem 1.5rem 1.5rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .about-img-frame {
+        height: 300px;
+      }
+      .venue-showcase {
+        height: 280px;
+      }
+    }
+
+
+.accordion-item {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  border-radius: 16px;
+
+  /* 🔥 MAKAPAL / FAT LOOK */
+  margin-bottom: 16px;
+  min-height: 90px;
+
+  overflow: hidden;
+  position: relative;
+
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+/* dark overlay */
+.accordion-item::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.30);
+}
+
+/* HEADER - MAS MALAKI + LUXURY FEEL */
+.accordion-header {
+  position: relative;
+  z-index: 2;
+
+  width: 100%;
+  padding: 22px 18px; /* 🔥 pinalaki */
+
+  border: none;
+  background: transparent;
+
+  cursor: pointer;
+}
+
+/* TITLE */
+.accordion-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+
+  width: 100%;
+
+  color: #fff;
+  font-weight: 600;
+  font-size: 16px;
+
+  text-shadow: 0 2px 8px rgba(0,0,0,0.6);
+}
+
+/* ICON BOX */
+.accordion-icon-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ARROW */
+.accordion-arrow {
+  color: #fff;
+  transition: transform 0.3s ease;
+}
+
+/* CONTENT */
+.accordion-content {
+  position: relative;
+  z-index: 2;
+
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease;
+}
+
+.accordion-item.active .accordion-content {
+  max-height: 700px;
+}
+
+/* BODY */
+.accordion-body {
+  background: rgba(255,255,255,0.80);
+  padding: 18px;
+  backdrop-filter: blur(6px);
+}
+
+/* =========================
+   DESKTOP (WAG GALAWIN)
+========================= */
+
+.gallery-masonry {
+  /* existing desktop styles mo stay here */
+}
+
+/* =========================
+   MOBILE ONLY FIX
+========================= */
+
+@media (max-width: 768px) {
+
+  /* GRID ONLY FOR MOBILE */
+  .gallery-masonry {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 140px;
+    gap: 10px;
+    padding: 0 10px;
+  }
+
+  /* CARD STYLE */
+  .gallery-item {
+    border-radius: 14px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+    transition: transform 0.25s ease;
+  }
+
+  /* IMAGE FIX (FACE FOCUS) */
+  .gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center; /* 🔥 FACE FOCUS */
+  }
+
+  /* COLLAGE LAYOUT ONLY MOBILE */
+  .gallery-item:nth-child(1) {
+    grid-column: span 2;
+    grid-row: span 2;
+  }
+
+  .gallery-item:nth-child(2) {
+    grid-row: span 2;
+  }
+
+  .gallery-item:nth-child(5) {
+    grid-column: span 2;
+  }
+
+  .gallery-item:nth-child(3),
+  .gallery-item:nth-child(6),
+  .gallery-item:nth-child(9) {
+    grid-row: span 2;
+  }
+
+  .gallery-item:nth-child(4),
+  .gallery-item:nth-child(7),
+  .gallery-item:nth-child(8),
+  .gallery-item:nth-child(10) {
+    grid-row: span 1;
+  }
+
+  /* tap effect */
+  .gallery-item:active {
+    transform: scale(0.97);
+  }
+
+  /* overlay icon */
+  .gallery-item-overlay i {
+    font-size: 18px;
+  }
+
+}
+
+footer {
+  position: relative;
+    background: url("images/footer.jpg") center 25% / cover no-repeat;
+  padding: 60px 20px;
+  color: #fff787;
+  overflow: hidden;
+}
+
+/* dark overlay para mababa opacity */
+footer::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6); /* adjust mo: 0.3 mas maliwanag, 0.8 mas madilim */
+  z-index: 1;
+}
+
+/* content stays above overlay */
+.footer-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+
+  </style>
+</head>
+<body>
+
+  <!-- Floating Flower Canvas Particle Overlay -->
+  <canvas id="petal-canvas"></canvas>
+
+  <!-- --- HEADER NAVIGATION --- -->
+  <header id="header">
+    <div class="nav-container">
+      <a href="#home" class="logo">Aiyanna </a>
+      <button class="mobile-toggle" id="mobile-toggle-btn" aria-label="Toggle Navigation Menu">
+        <i class="fa-solid fa-bars-staggered"></i>
+      </button>
+      <nav class="nav-menu" id="nav-menu">
+        <a href="#home" class="nav-link active">Home</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#gallery" class="nav-link">Gallery</a>
+        <a href="#venue" class="nav-link">Venue</a>
+        <a href="#event-details" class="nav-link">Event Details</a>
+        <a href="#traditions" class="nav-link">18 Traditions</a>
+        <a href="#dress-code" class="nav-link">Dress Code</a>
+        <a href="#special-notes" class="nav-link">Special Notes</a>
+       
+      </nav>
+    </div>
+  </header>
+
+  <!-- --- HERO SECTION --- -->
+  <section id="home" class="hero">
+    <div class="hero-slideshow" id="hero-slideshow">
+      
+      <!-- Statically Declared Images for Slideshow (Visible inside the code) -->
+      <div class="hero-slide active" style="background-image: url('images/5.jpg');">
+        <img src="images/5.jpg" alt="Slideshow 1" style="display:none;" onerror="this.parentElement.style.backgroundImage='none'; this.parentElement.style.background='linear-gradient(135deg, #FEF9E7, #D4A5B8)';" />
+      </div>
+      
+      <div class="hero-slide" style="background-image: url('images/2.jpg');">
+        <img src="images/2.jpg" alt="Slideshow 2" style="display:none;" onerror="this.parentElement.style.backgroundImage='none'; this.parentElement.style.background='linear-gradient(135deg, #D4A5B8, #9CAEC0)';" />
+      </div>
+      
+      <div class="hero-slide" style="background-image: url('images/3.jpg');">
+        <img src="images/3.jpg" alt="Slideshow 3" style="display:none;" onerror="this.parentElement.style.backgroundImage='none'; this.parentElement.style.background='linear-gradient(135deg, #9CAEC0, #8F9E8B)';" />
+      </div>
+      
+      <div class="hero-slide" style="background-image: url('images/4.jpg');">
+        <img src="images/4.jpg" alt="Slideshow 4" style="display:none;" onerror="this.parentElement.style.backgroundImage='none'; this.parentElement.style.background='linear-gradient(135deg, #8F9E8B, #FEF9E7)';" />
+      </div>
+      
+      <div class="hero-slide" style="background-image: url('images/5.jpg');">
+        <img src="images/5.jpg" alt="Slideshow 5" style="display:none;" onerror="this.parentElement.style.backgroundImage='none'; this.parentElement.style.background='linear-gradient(135deg, #FEF9E7, #9CAEC0)';" />
+      </div>
+      
+      <div class="hero-slide" style="background-image: url('images/6.jpg');">
+        <img src="images/6.jpg" alt="Slideshow 6" style="display:none;" onerror="this.parentElement.style.backgroundImage='none'; this.parentElement.style.background='linear-gradient(135deg, #D4A5B8, #8F9E8B)';" />
+      </div>
+      
+      <div class="hero-slide" style="background-image: url('images/7.jpg');">
+        <img src="images/7.jpg" alt="Slideshow 7" style="display:none;" onerror="this.parentElement.style.backgroundImage='none'; this.parentElement.style.background='linear-gradient(135deg, #E6ECEF, #F5EAEB)';" />
+      </div>
+      
+      <div class="hero-slide" style="background-image: url('images/8.jpg');">
+        <img src="images/8.jpg" alt="Slideshow 8" style="display:none;" onerror="this.parentElement.style.backgroundImage='none'; this.parentElement.style.background='linear-gradient(135deg, #9CAEC0, #F5EAEB)';" />
+      </div>
+      
+      <div class="hero-slide" style="background-image: url('images/9.jpg');">
+        <img src="images/9.jpg" alt="Slideshow 9" style="display:none;" onerror="this.parentElement.style.backgroundImage='none'; this.parentElement.style.background='linear-gradient(135deg, #8F9E8B, #D4A5B8)';" />
+      </div>
+      
+      <div class="hero-slide" style="background-image: url('images/10.jpg');">
+        <img src="images/10.jpg" alt="Slideshow 10" style="display:none;" onerror="this.parentElement.style.backgroundImage='none'; this.parentElement.style.background='linear-gradient(135deg, #FEF9E7, #D4A5B8)';" />
+      </div>
+      
+    </div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <p class="hero-invitation">You Are Invited To</p>
+      <h1 class="hero-title">Aiyanna's Debut</h1>
+      <h2 class="hero-subtitle">A Decade and Eight</h2>
+      
+      <div class="hero-meta">
+        <div class="meta-item">
+          <span class="meta-label">Date</span>
+          <span class="meta-val">July 11, 2026</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Time</span>
+          <span class="meta-val">4:30 PM</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Theme</span>
+          <span class="meta-val" style="color: var(--light-yellow);">Pink & Lilac</span>
+        </div>
+      </div>
+      
+      <a href="#about" class="hero-scroll-btn" aria-label="Scroll Down to About Section">
+        <i class="fa-solid fa-chevron-down"></i>
+      </a>
+    </div>
+  </section>
+
+  <!-- --- ABOUT SECTION --- -->
+  <section id="about" class="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-image-wrapper reveal-element">
+          <div class="about-img-frame">
+            <!-- Statically declared image 1 (Visible in code) -->
+            <img src="images/5.jpg" alt="Aiyanna" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+            <div class="img-fallback">
+              <i class="fa-solid fa-wand-magic-sparkles"></i>
+              <span>Aiyanna</span>
+            </div>
+            <div class="about-badge">
+              <span>18</span>
+              <span>Years</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="about-content reveal-element">
+          <p class="about-cursive">Welcome to my milestone celebration</p>
+          <h3 class="about-title">Blooming into Womanhood</h3>
+          <p class="about-text">
+            Eighteen years of laughter, dreams, and growth. As I take my first steps into womanhood, I wish to surround myself with the family and friends who have nurtured, supported, and loved me along this beautiful journey.
+          </p>
+          <div class="about-highlight">
+            "Like a flower growing in an enchanted garden, she blooms gracefully in her own time."
+          </div>
+          <p class="about-text">
+            Join me as I celebrate this special milestone of my life. Together, let us paint an unforgettable evening filled with memories, traditions, music, and love.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- --- GALLERY SECTION --- -->
+  <section id="gallery" class="gallery">
+    <div class="container">
+      <h3 class="section-title reveal-element">Aiyanna's Album</h3>
+      <p class="section-subtitle reveal-element">Capturing the Moments</p>
+      
+      <!-- Statically Declared Gallery Images (Visible inside the code) -->
+      <div class="gallery-masonry reveal-element" id="gallery-grid">
+        
+        <div class="gallery-item" data-src="images/1.jpg">
+          <img src="images/1.jpg" alt="Gallery Image 1" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'; this.parentElement.setAttribute('data-src', 'fallback');" />
+          <div class="img-fallback">
+            <i class="fa-solid fa-leaf"></i>
+            <span>Bloom 1</span>
+          </div>
+          <div class="gallery-item-overlay">
+            <i class="fa-solid fa-magnifying-glass-plus"></i>
+          </div>
+        </div>
+        
+        <div class="gallery-item" data-src="images/2.jpg">
+          <img src="images/2.jpg" alt="Gallery Image 2" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'; this.parentElement.setAttribute('data-src', 'fallback');" />
+          <div class="img-fallback">
+            <i class="fa-solid fa-leaf"></i>
+            <span>Bloom 2</span>
+          </div>
+          <div class="gallery-item-overlay">
+            <i class="fa-solid fa-magnifying-glass-plus"></i>
+          </div>
+        </div>
+        
+        <div class="gallery-item" data-src="images/3.jpg">
+          <img src="images/3.jpg" alt="Gallery Image 3" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'; this.parentElement.setAttribute('data-src', 'fallback');" />
+          <div class="img-fallback">
+            <i class="fa-solid fa-leaf"></i>
+            <span>Bloom 3</span>
+          </div>
+          <div class="gallery-item-overlay">
+            <i class="fa-solid fa-magnifying-glass-plus"></i>
+          </div>
+        </div>
+        
+        <div class="gallery-item" data-src="images/4.jpg">
+          <img src="images/4.jpg" alt="Gallery Image 4" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'; this.parentElement.setAttribute('data-src', 'fallback');" />
+          <div class="img-fallback">
+            <i class="fa-solid fa-leaf"></i>
+            <span>Bloom 4</span>
+          </div>
+          <div class="gallery-item-overlay">
+            <i class="fa-solid fa-magnifying-glass-plus"></i>
+          </div>
+        </div>
+        
+        <div class="gallery-item" data-src="images/5.jpg">
+          <img src="images/5.jpg" alt="Gallery Image 5" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'; this.parentElement.setAttribute('data-src', 'fallback');" />
+          <div class="img-fallback">
+            <i class="fa-solid fa-leaf"></i>
+            <span>Bloom 5</span>
+          </div>
+          <div class="gallery-item-overlay">
+            <i class="fa-solid fa-magnifying-glass-plus"></i>
+          </div>
+        </div>
+        
+        <div class="gallery-item" data-src="images/6.jpg">
+          <img src="images/6.jpg" alt="Gallery Image 6" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'; this.parentElement.setAttribute('data-src', 'fallback');" />
+          <div class="img-fallback">
+            <i class="fa-solid fa-leaf"></i>
+            <span>Bloom 6</span>
+          </div>
+          <div class="gallery-item-overlay">
+            <i class="fa-solid fa-magnifying-glass-plus"></i>
+          </div>
+        </div>
+        
+        <div class="gallery-item" data-src="images/7.jpg">
+          <img src="images/7.jpg" alt="Gallery Image 7" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'; this.parentElement.setAttribute('data-src', 'fallback');" />
+          <div class="img-fallback">
+            <i class="fa-solid fa-leaf"></i>
+            <span>Bloom 7</span>
+          </div>
+          <div class="gallery-item-overlay">
+            <i class="fa-solid fa-magnifying-glass-plus"></i>
+          </div>
+        </div>
+        
+        <div class="gallery-item" data-src="images/8.jpg">
+          <img src="images/8.jpg" alt="Gallery Image 8" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'; this.parentElement.setAttribute('data-src', 'fallback');" />
+          <div class="img-fallback">
+            <i class="fa-solid fa-leaf"></i>
+            <span>Bloom 8</span>
+          </div>
+          <div class="gallery-item-overlay">
+            <i class="fa-solid fa-magnifying-glass-plus"></i>
+          </div>
+        </div>
+        
+        <div class="gallery-item" data-src="images/9.jpg">
+          <img src="images/9.jpg" alt="Gallery Image 9" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'; this.parentElement.setAttribute('data-src', 'fallback');" />
+          <div class="img-fallback">
+            <i class="fa-solid fa-leaf"></i>
+            <span>Bloom 9</span>
+          </div>
+          <div class="gallery-item-overlay">
+            <i class="fa-solid fa-magnifying-glass-plus"></i>
+          </div>
+        </div>
+        
+        <div class="gallery-item" data-src="images/10.jpg">
+          <img src="images/10.jpg" alt="Gallery Image 10" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'; this.parentElement.setAttribute('data-src', 'fallback');" />
+          <div class="img-fallback">
+            <i class="fa-solid fa-leaf"></i>
+            <span>Bloom 10</span>
+          </div>
+          <div class="gallery-item-overlay">
+            <i class="fa-solid fa-magnifying-glass-plus"></i>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+
+  <!-- Lightbox Preview Modal -->
+  <div class="lightbox" id="lightbox-modal">
+    <button class="lightbox-close" id="lightbox-close-btn" aria-label="Close Lightbox Modal">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+    <button class="lightbox-nav lightbox-prev" id="lightbox-prev-btn" aria-label="Previous Image">
+      <i class="fa-solid fa-chevron-left"></i>
+    </button>
+    <button class="lightbox-nav lightbox-next" id="lightbox-next-btn" aria-label="Next Image">
+      <i class="fa-solid fa-chevron-right"></i>
+    </button>
+    <div class="lightbox-content">
+      <img src="" id="lightbox-img" alt="Enlarged view" />
+    </div>
+  </div>
+<hr style="border: none; height: 1px; background: linear-gradient(to right, transparent, #f7c6d9, #e91e63, #f7c6d9, transparent);margin: 25px 0;">
+  <!-- --- VENUE SECTION --- -->
+  <section id="venue" class="venue">
+    <div class="container">
+      <h3 class="section-title reveal-element">The Venue</h3>
+      <p class="section-subtitle reveal-element">Where Magic Happens</p>
+      
+      <div class="venue-grid reveal-element">
+        <div class="venue-showcase">
+          
+          <!-- Statically Declared Venue Slides (Visible inside the code) -->
+          <div class="venue-slider" id="venue-slider">
+            
+            <div class="venue-slide active">
+              <img src="venue/1.jpg" alt="Venue image 1" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+              <div class="venue-slide-fallback">
+                <i class="fa-solid fa-tree-city"></i>
+                <h4>Garden Pavilion 1</h4>
+                <p>Venue Showcase Room</p>
+              </div>
+            </div>
+            
+            <div class="venue-slide">
+              <img src="venue/2.jpg" alt="Venue image 2" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+              <div class="venue-slide-fallback">
+                <i class="fa-solid fa-tree-city"></i>
+                <h4>Garden Pavilion 2</h4>
+                <p>Venue Showcase Room</p>
+              </div>
+            </div>
+            
+            <div class="venue-slide">
+              <img src="venue/3.jpg" alt="Venue image 3" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+              <div class="venue-slide-fallback">
+                <i class="fa-solid fa-tree-city"></i>
+                <h4>Garden Pavilion 3</h4>
+                <p>Venue Showcase Room</p>
+              </div>
+            </div>
+            
+          </div>
+          
+          <button class="venue-btn venue-btn-prev" id="venue-prev-btn" aria-label="Previous Venue Slide">
+            <i class="fa-solid fa-chevron-left"></i>
+          </button>
+          <button class="venue-btn venue-btn-next" id="venue-next-btn" aria-label="Next Venue Slide">
+            <i class="fa-solid fa-chevron-right"></i>
+          </button>
+          <div class="venue-dots" id="venue-dots"></div>
+        </div>
+        
+        <div class="venue-details">
+          <span class="venue-tag">Exclusive Celebration</span>
+          <h4 class="venue-name">The Grand Ballroom & Garden Pavilions</h4>
+          <p class="venue-desc">
+           Dea Myles Events and Function Hall is a spacious roadside venue in Santiago City, Isabela, located along the AH26 highway. It offers a versatile indoor space suitable for a range of events, from intimate gatherings to milestone celebrations. Its accessible location makes it a convenient choice for guests from the city and surrounding areas.
+          </p>
+          
+          <div class="venue-info-list">
+            <div class="venue-info-item">
+              <i class="fa-solid fa-location-dot"></i>
+              <span>
+                Dea Myles Events, Santiago City<br>
+                AH26 (Maharlika Highway / Asian Highway 26)
+              </span>
+            </div>
+            <div class="venue-info-item">
+              <i class="fa-solid fa-clock"></i>
+              <span>Reception directly follows the ceremony</span>
+            </div>
+          </div>
+          
+          <div class="map-placeholder">
+            <div class="map-placeholder-overlay">
+              <i class="fa-solid fa-map-location-dot"></i>
+              <h5>Location Map</h5>
+              <p>Find the best route to our Enchanted Garden celebration</p>
+              <a href="https://www.google.com/maps/place/Dea+Myles+Events+And+Function/@16.6918511,121.5342696,17z/data=!4m6!3m5!1s0x339005fe3f90b781:0xbc3b98fc0c02e2a!8m2!3d16.691846!4d121.535718!16s%2Fg%2F1tn4vpyg?entry=ttu&g_ep=EgoyMDI2MDYyNC4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener" class="btn-map">View on Google Maps</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- --- EVENT DETAILS --- -->
+  <section id="event-details" class="event-details">
+    <div class="container">
+      <h3 class="section-title reveal-element">Event details</h3>
+      <p class="section-subtitle reveal-element">The Celebration Guide</p>
+      
+      <div class="details-grid reveal-element">
+        <div class="details-card glass-card">
+          <div class="details-icon">
+            <i class="fa-solid fa-calendar-days"></i>
+          </div>
+          <p><b>Date & Time</b></p>
+          <hr style="border: none; height: 1px; background: linear-gradient(to right, transparent, #f7c6d9, #e91e63, #f7c6d9, transparent);margin: 25px 0;">
+          <p>Saturday, <strong>July 11, 2026</strong></p>
+          <p>Celebration begins at <strong>4:30 PM</strong></p>
+        </div>
+        
+        <div class="details-card glass-card">
+          <div class="details-icon">
+            <i class="fa-solid fa-shirt"></i>
+          </div>
+          <p><b>Dress Code</b></p>
+          <hr style="border: none; height: 1px; background: linear-gradient(to right, transparent, #f7c6d9, #e91e63, #f7c6d9, transparent);margin: 25px 0;">
+          <p>Strictly <strong>Semi-Formal</strong></p>
+          <p>Please wear the color motif</p>
+        </div>
+        
+        <div class="details-card glass-card">
+          <div class="details-icon">
+            <i class="fa-solid fa-palette"></i>
+          </div>
+          <p><b>Color Motif</b></p>
+          <hr style="border: none; height: 1px; background: linear-gradient(to right, transparent, #f7c6d9, #e91e63, #f7c6d9, transparent);margin: 25px 0;">
+          <p><strong> Pink & Lilac /strong></p>
+          <p>Follow our garden palette</p>
+        </div>
+        
+        <div class="details-card glass-card">
+          <div class="details-icon">
+            <i class="fa-solid fa-leaf"></i>
+          </div>
+          <p><b>Garden Theme</b></p>
+          <hr style="border: none; height: 1px; background: linear-gradient(to right, transparent, #f7c6d9, #e91e63, #f7c6d9, transparent);margin: 25px 0;">
+          <p><strong>Enchanted Garden</strong></p>
+          <p>Luxury Floral Concept</p>
+        </div>
+      </div>
+    </div>
+  </section>
+<hr style="border: none; height: 1px; background: linear-gradient(to right, transparent, #f7c6d9, #e91e63, #f7c6d9, transparent);margin: 25px 0;">
+ 
+<!-- --- 18 TRADITIONS --- -->
+  <section id="traditions" class="traditions">
+  <div class="container">
+    <h3 class="section-title reveal-element">18 traditions</h3>
+    <p class="section-subtitle reveal-element">Honoring the Milestones</p>
+
+    <div class="traditions-wrapper reveal-element" id="traditions-accordion">
+
+      <!-- 18 Roses -->
+      <div class="accordion-item"
+        style="background:url('images/D4.jpg') center/cover no-repeat; position:relative;">
+
+        <button class="accordion-header" aria-expanded="false">
+          <span class="accordion-title">
+            <span>
+              <i class="fa-solid fa-spa" style="color:#e91e63;"></i>
+            </span>
+            <span style="color: #d81b60; font-weight: 700; text-shadow: 0 0 12px rgba(255,200,220,0.9), 0 0 25px rgba(255,255,255,0.5);">18 Roses</span>
+            <i class="fa-solid fa-chevron-down accordion-arrow"></i>
+          </span>
+        </button>
+
+        <div class="accordion-content">
+          <div class="accordion-body"
+            style="background:rgba(255,255,255,0.75); padding:15px;">
+            <div class="names-grid" id="list-roses"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 18 Gifts -->
+      <div class="accordion-item"
+        style="background:url('images/D3.jpg') center/cover no-repeat; position:relative;">
+
+        <button class="accordion-header" aria-expanded="false">
+          <span class="accordion-title">
+            <span>
+              <i class="fa-solid fa-gift" style="color:#1565c0;"></i>
+            </span>
+            <span style="color: #bf6f00; font-weight: 700; text-shadow: 0 0 12px rgba(255,200,50,0.9), 0 0 25px rgba(255,255,255,0.5);">18 Gifts</span>
+            <i class="fa-solid fa-chevron-down accordion-arrow"></i>
+          </span>
+
+        </button>
+
+        <div class="accordion-content">
+          <div class="accordion-body"
+            style="background:rgba(255,255,255,0.75); padding:15px;">
+            <div class="names-grid" id="list-gifts"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 18 Stuffed Toys -->
+      <div class="accordion-item"
+        style="background:url('images/D1.jpg') center/cover no-repeat; position:relative;">
+
+        <button class="accordion-header" aria-expanded="false">
+          <span class="accordion-title">
+            <span>
+              <i class="fa-solid fa-cubes" style="color:#e65100;"></i>
+            </span>
+            <span style="color: #bf6f00; font-weight: 700; text-shadow: 0 0 12px rgba(255,200,50,0.9), 0 0 25px rgba(255,255,255,0.5);">18 Stuffed Toys</span>
+            <i class="fa-solid fa-chevron-down accordion-arrow"></i>
+          </span>
+        </button>
+
+        <div class="accordion-content">
+          <div class="accordion-body"
+            style="background:rgba(255,255,255,0.75); padding:15px;">
+            <div class="names-grid" id="list-toys"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 18 Yellow Bills -->
+      <div class="accordion-item"
+        style="background:url('images/D7.jpg') center/cover no-repeat; position:relative;">
+
+        <button class="accordion-header" aria-expanded="false">
+          <span class="accordion-title">
+            <span>
+              <i class="fa-solid fa-money-bill-wave" style="color:#f9a825;"></i>
+            </span>
+            <span style="color: #b47c00; font-weight: 700; text-shadow: 0 0 12px rgba(255,215,0,0.9), 0 0 25px rgba(255,255,255,0.5);">18 Yellow Bills</span>
+            <i class="fa-solid fa-chevron-down accordion-arrow"></i>
+          </span>
+        </button>
+
+        <div class="accordion-content">
+          <div class="accordion-body"
+            style="background:rgba(255,255,255,0.75); padding:15px;">
+            <div class="names-grid" id="list-yellow-bills"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 18 Candles -->
+      <div class="accordion-item"
+        style="background:url('images/5.jpg') center/cover no-repeat; position:relative;">
+
+        <button class="accordion-header" aria-expanded="false">
+          <span class="accordion-title">
+            <span>
+              <i class="fa-solid fa-fire" style="color:#d32f2f;"></i>
+            </span>
+            <span style="color: #b71c1c; font-weight: 700; text-shadow: 0 0 12px rgba(255,80,80,0.9), 0 0 25px rgba(255,255,255,0.5);">18 Candles</span>
+            <i class="fa-solid fa-chevron-down accordion-arrow"></i>
+          </span>
+        </button>
+
+        <div class="accordion-content">
+          <div class="accordion-body"
+            style="background:rgba(255,255,255,0.75); padding:15px;">
+            <div class="names-grid" id="list-candles"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 18 Blue Bills -->
+      <div class="accordion-item"
+        style="background:url('images/D6.jpg') center/cover no-repeat; position:relative;">
+
+        <button class="accordion-header" aria-expanded="false">
+          <span class="accordion-title">
+            <span>
+              <i class="fa-solid fa-money-bill-wave" style="color:#1976d2;"></i>
+            </span>
+            <span style="color: #0d47a1; font-weight: 700; text-shadow: 0 0 12px rgba(30,144,255,0.9), 0 0 25px rgba(255,255,255,0.5);">18 Blue Bills</span>
+            <i class="fa-solid fa-chevron-down accordion-arrow"></i>
+          </span>
+        </button>
+
+        <div class="accordion-content">
+          <div class="accordion-body"
+            style="background:rgba(255,255,255,0.75); padding:15px;">
+            <div class="names-grid" id="list-blue-bills"></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+  <!-- --- DRESS CODE --- -->
+  <section id="dress-code" class="dress-code">
+    <div class="container">
+      <h3 class="section-title reveal-element">Dress Code</h3>
+      <p class="section-subtitle reveal-element">Lining in Harmony</p>
+      
+      <div class="dress-code-card glass-card reveal-element">
+        <p class="dress-code-text" style="font-size: 1.1rem; margin-bottom: 2rem; font-family: var(--font-sans); font-weight: 300;">
+          To capture the essence of our Enchanted Garden theme, we kindly invite all guests to dress in our formal color palette.
+        </p>
+        
+        <div class="palette-container">
+          <div class="palette-item">
+            <div class="palette-circle pc-yellow"></div>
+            <span class="palette-label">Light Yellow</span>
+          </div>
+          <div class="palette-item">
+            <div class="palette-circle pc-pink"></div>
+            <span class="palette-label">Dusty Pink</span>
+          </div>
+          <div class="palette-item">
+            <div class="palette-circle pc-green"></div>
+            <span class="palette-label">Sage Green</span>
+          </div>
+          <div class="palette-item">
+            <div class="palette-circle pc-blue"></div>
+            <span class="palette-label">Dusty Blue</span>
+          </div>
+        </div>
+        
+        <p class="dress-code-text">
+          <strong>May we encourage everyone to strictly follow our special request to wear colors of this palette.</strong>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- --- SPECIAL NOTES --- -->
+  <section id="special-notes" class="special-notes">
+    <div class="container">
+      <h3 class="section-title reveal-element">Special notes</h3>
+      <p class="section-subtitle reveal-element">Kind Reminders</p>
+      
+      <div class="notes-grid reveal-element">
+        <div class="note-card glass-card">
+          <div class="note-icon-box">
+            <i class="fa-solid fa-user-xmark"></i>
+          </div>
+          <div class="note-content">
+            <h4>No Plus-One Policy</h4>
+            <p>To help us accommodate everyone comfortably, we are unable to extend plus-one invitations.</p>
+          </div>
+        </div>
+        
+        <div class="note-card glass-card">
+          <div class="note-icon-box">
+            <i class="fa-solid fa-envelope-open-text"></i>
+          </div>
+          <div class="note-content">
+            <h4>Named Guest Only</h4>
+            <p>Kindly note that this invitation is reserved for the named guest only. We truly appreciate your understanding as we celebrate this special day with our closest family and friends.</p>
+          </div>
+        </div>
+        
+        <div class="note-card glass-card" style="grid-column: 1 / -1; max-width: 600px; margin: 0 auto;">
+          <div class="note-icon-box">
+            <i class="fa-solid fa-shirt"></i>
+          </div>
+          <div class="note-content">
+            <h4>Theme Palette</h4>
+            <p>We truly appreciate you following the color palette given on the invitation.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- --- RSVP SECTION 
+  <section id="rsvp" class="rsvp">
+    <div class="container">
+      <h3 class="section-title reveal-element">rsvp</h3>
+      <p class="section-subtitle reveal-element">Will You Join Us?</p>
+      
+      <div class="rsvp-card glass-card reveal-element">
+        <div class="rsvp-form-container">
+          
+          <form class="rsvp-form" id="rsvp-form" novalidate>
+            <div class="rsvp-row">
+              <div class="form-group" id="group-name">
+                <label for="guest-name">Guest Name</label>
+                <input type="text" id="guest-name" placeholder="Enter your full name" required />
+                <span class="error-msg">Please enter your name.</span>
+              </div>
+              <div class="form-group" id="group-phone">
+                <label for="guest-phone">Contact Number</label>
+                <input type="tel" id="guest-phone" placeholder="Enter contact number" required />
+                <span class="error-msg">Please enter a valid contact number.</span>
+              </div>
+            </div>
+            
+            <div class="form-group" id="group-attend">
+              <label for="guest-attendance">Will Attend?</label>
+              <select id="guest-attendance" required>
+                <option value="" disabled selected>Kindly select your response</option>
+                <option value="yes">Yes, I will attend</option>
+                <option value="no">No, I cannot attend</option>
+              </select>
+              <span class="error-msg">Please select your attendance.</span>
+            </div>
+            
+            <div class="form-group">
+              <label for="guest-message">Well Wishes / Message</label>
+              <textarea id="guest-message" rows="4" placeholder="Leave a message for Aiyanna..."></textarea>
+            </div>
+            
+            <button type="submit" class="btn-rsvp">Send RSVP</button>
+          </form>
+
+          <!-- RSVP Success View 
+          <div class="rsvp-success" id="rsvp-success-view">
+            <div class="success-icon">
+              <i class="fa-solid fa-heart-circle-check"></i>
+            </div>
+            <h3>Thank You!</h3>
+            <p id="success-msg">Your response has been successfully sent. We look forward to celebrating this magical milestone with you!</p>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </section> -->
+
+  <!-- --- FOOTER --- -->
+<footer>
+  <div class="footer-content">
+    
+    <p class="footer-text">
+      "Thank you for celebrating Aiyanna's 18th Birthday with us. We can't wait to celebrate this unforgettable milestone together!"
+    </p>
+
+    <div class="footer-divider"></div>
+
+    <div class="copyright">
+     © 2026 Aiyanna’s Debut. All Rights Reserved. A celebration of grace, elegance, and unforgettable memories.
+    </div>
+
+  </div>
+</footer>
+
+
+
+
+  <!-- --- SCRIPTS --- -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      
+      /* ==========================================================================
+         1. 18 TRADITIONS DATA BINDING
+         ========================================================================== */
+      const rosesNames = [
+        "Marcux Dale Dela Cruz", "Justin Romulo Hyner", "Nathan Kyle Hyner", "Fritz Arkhe Sebastian",
+        "Mark Francis Dela Cruz", "John Harvey Mangligot", "Elmer Dela Cruz", "Kurt Noah Sebastian",
+        "Ralph Geodesy Gabatin", "Gilbert Ramos Jr.", "Prince Axelrod Reyes", "Enrico Bueno",
+        "King James Ortiz", "Rowel Valdez", "Kurt Zian Ortiz", "(To be announced)",
+        "Scott Alcantara", "Marzonie Dela Cruz"
+      ];
+
+      const giftsNames = [
+        "Jasmine Dela Cruz", "Cheryl Dela Cruz", "Mary Clyde Cordova", "Imelda Cairel",
+        "Marjorie Pastor-Gante", "Carla & Christian Quijano", "Michael Gallego", "Bernardo Angel",
+        "Elvie Peralta", "Aaron Dimaliwat", "Ellen Russel Bayaua-Sison", "Diane Malana",
+        "Honeylet Bueno", "Honeybabe Bueno", "Kisses May Delos Trinos", "Angel Joy Delos Trinos",
+        "Monica Medina-Rotor", "Gladys Serano"
+      ];
+
+      const toysNames = [
+        "Eunice Joy Dela Cruz", "Lady Love Delos Trinos", "Francine Anne Solomon", "Athena Beatrice Calibuyo",
+        "Anna Nicole Samiling", "Ayessa Siao", "Jessica De Guzman", "Angel Facun",
+        "Danica Alvarez", "Irish Rivera", "Babylyn Belza", "Bea Sabado",
+        "Tristan Bautista", "Andrei Andres", "Katherine Rose Soriano", "Princess Ellaine Gamurot",
+        "Jhelvin Jay Peralta", "Aaliyah Cyril Peralta"
+      ];
+
+      const yellowBillsNames = [
+        "James Ortiz", "Marvin Dumaliang", "Nyco Baligod", "Jerwin Lumboy",
+        "Francis Solomon", "Jayson Padillo", "Vincci Oliver Calibuyo", "Raymond Geronga",
+        "Diana Rose Dulluog", "Florence Cuyat", "Cecile Peralta", "Nikki Taguinod",
+        "Rexie Santos", "Richard Perigrino", "Raymond Pastores", "Michael Median",
+        "John Rodson Ariola", "Keith Millo"
+      ];
+
+      const candlesNames = [
+        "Princess Pia Ramos", "Jugilyn Ramos", "Monica Joy Dela Cruz", "Roslyn Bergonia",
+        "Ardette Kyle Apolis", "Frixe Bacani", "Kathleen Mae Mangligot", "Richelle Fronda",
+        "Rowell Valdez", "Grace Mariano", "Trinah Mae Ancheta", "Hannah Mae Jose-Reyes",
+        "Aizel Reyes", "Cyra Corpuz", "Evelyn Sebastian", "Flora Dela Cruz",
+        "Clavelina Mangligot", "Julfa Ramos"
+      ];
+
+      const blueBillsNames = [
+        "Elmer Dela Cruz", "Patrick Jay Dela Cruz", "Armando Gutierrez", "Ariane Solomon",
+        "Julie Ann Padillo", "Gen Licos Calibuyo", "Luzviminda Geronga", "Rosalie Chua Blanza",
+        "Mila Castillejos Gomez", "Marjorie Tejada", "Francis Robert Santos", "Arnold Peralta",
+        "Eunice Sebastian", "Princess Pia Ramos", "Jugilyn Ramos", "Gilbert Ramos",
+        "John Harvey Mangligot", "Ralph Geodesy Gabatin"
+      ];
+
+      function populateNamesList(elementId, namesArray) {
+        const container = document.getElementById(elementId);
+        if (!container) return;
+        
+        container.innerHTML = namesArray.map((name, index) => `
+          <div class="name-item">
+            <span class="name-number">${index + 1}</span>
+            <span class="name-text">${name}</span>
+          </div>
+        `).join("");
+      }
+
+      populateNamesList("list-roses", rosesNames);
+      populateNamesList("list-gifts", giftsNames);
+      populateNamesList("list-toys", toysNames);
+      populateNamesList("list-yellow-bills", yellowBillsNames);
+      populateNamesList("list-candles", candlesNames);
+      populateNamesList("list-blue-bills", blueBillsNames);
+
+
+      /* ==========================================================================
+         2. CANVASES / PETAL FALLING PARTICLE SYSTEM
+         ========================================================================== 
+      const petalCanvas = document.getElementById("petal-canvas");
+      const pCtx = petalCanvas.getContext("2d");
+      
+      let canvasW = petalCanvas.width = window.innerWidth;
+      let canvasH = petalCanvas.height = window.innerHeight;
+      
+      window.addEventListener("resize", () => {
+        canvasW = petalCanvas.width = window.innerWidth;
+        canvasH = petalCanvas.height = window.innerHeight;
+      });
+
+      const petalColors = [
+        "rgba(212, 165, 184, 0.45)",  // dusty pink
+        "rgba(156, 174, 192, 0.35)",  // dusty blue
+        "rgba(254, 249, 231, 0.5)"     // pale light yellow
+      ];
+
+      class Petal {
+        constructor() {
+          this.reset();
+        }
+
+        reset() {
+          this.x = Math.random() * canvasW;
+          this.y = Math.random() * -canvasH - 20;
+          this.size = Math.random() * 8 + 6;
+          this.speedY = Math.random() * 1.2 + 0.8;
+          this.speedX = Math.random() * 0.8 - 0.4;
+          this.color = petalColors[Math.floor(Math.random() * petalColors.length)];
+          this.rotation = Math.random() * 360;
+          this.rotationSpeed = Math.random() * 1.5 - 0.75;
+          this.oscillation = Math.random() * 20;
+          this.oscillationSpeed = Math.random() * 0.02 + 0.01;
+        }
+
+        update() {
+          this.y += this.speedY;
+          this.x += this.speedX + Math.sin(this.oscillation) * 0.3;
+          this.oscillation += this.oscillationSpeed;
+          this.rotation += this.rotationSpeed;
+
+          if (this.y > canvasH + 20 || this.x < -20 || this.x > canvasW + 20) {
+            this.reset();
+          }
+        }
+
+        draw() {
+          pCtx.save();
+          pCtx.translate(this.x, this.y);
+          pCtx.rotate((this.rotation * Math.PI) / 180);
+          pCtx.fillStyle = this.color;
+          
+          pCtx.beginPath();
+          // Draw organic petal path
+          pCtx.moveTo(0, 0);
+          pCtx.bezierCurveTo(this.size / 2, -this.size / 2, this.size, -this.size / 3, this.size, 0);
+          pCtx.bezierCurveTo(this.size, this.size / 2, this.size / 2, this.size, 0, this.size / 2);
+          pCtx.bezierCurveTo(-this.size / 2, this.size, -this.size, this.size / 2, -this.size, 0);
+          pCtx.bezierCurveTo(-this.size, -this.size / 3, -this.size / 2, -this.size / 2, 0, 0);
+          
+          pCtx.closePath();
+          pCtx.fill();
+          pCtx.restore();
+        }
+      }
+
+      const petals = Array.from({ length: 45 }, () => new Petal());
+
+      function animatePetals() {
+        pCtx.clearRect(0, 0, canvasW, canvasH);
+        petals.forEach(p => {
+          p.update();
+          p.draw();
+        });
+        requestAnimationFrame(animatePetals);
+      }
+
+      animatePetals(); */
+
+
+      /* ==========================================================================
+         3. HERO BACKGROUND SLIDESHOW CYCLE
+         ========================================================================== */
+      const heroSlides = document.querySelectorAll(".hero-slide");
+      let activeSlideIndex = 0;
+
+      if (heroSlides.length > 0) {
+        setInterval(() => {
+          heroSlides[activeSlideIndex].classList.remove("active");
+          activeSlideIndex = (activeSlideIndex + 1) % heroSlides.length;
+          heroSlides[activeSlideIndex].classList.add("active");
+        }, 6000);
+      }
+
+
+      /* ==========================================================================
+         4. NAV SCROLL AND SPY ACTIONS
+         ========================================================================== */
+      const header = document.getElementById("header");
+      const sections = document.querySelectorAll("section");
+      const navLinks = document.querySelectorAll(".nav-link");
+
+      window.addEventListener("scroll", () => {
+        // Toggle sticky nav background
+        if (window.scrollY > 50) {
+          header.classList.add("scrolled");
+        } else {
+          header.classList.remove("scrolled");
+        }
+
+        // Active Section Scroll Spy
+        let currentSectionId = "";
+        sections.forEach(sec => {
+          const top = sec.offsetTop - 120;
+          const bottom = top + sec.offsetHeight;
+          if (window.scrollY >= top && window.scrollY < bottom) {
+            currentSectionId = sec.getAttribute("id");
+          }
+        });
+
+        navLinks.forEach(link => {
+          link.classList.remove("active");
+          if (link.getAttribute("href") === `#${currentSectionId}`) {
+            link.classList.add("active");
+          }
+        });
+      });
+
+      // Mobile Hamburg menu toggle
+      const mobileToggleBtn = document.getElementById("mobile-toggle-btn");
+      const navMenu = document.getElementById("nav-menu");
+
+      mobileToggleBtn.addEventListener("click", () => {
+        navMenu.classList.toggle("open");
+        const icon = mobileToggleBtn.querySelector("i");
+        if (navMenu.classList.contains("open")) {
+          icon.classList.remove("fa-bars-staggered");
+          icon.classList.add("fa-xmark");
+        } else {
+          icon.classList.remove("fa-xmark");
+          icon.classList.add("fa-bars-staggered");
+        }
+      });
+
+      // Close menu when clicking link
+      navLinks.forEach(link => {
+        link.addEventListener("click", () => {
+          navMenu.classList.remove("open");
+          const icon = mobileToggleBtn.querySelector("i");
+          icon.classList.remove("fa-xmark");
+          icon.classList.add("fa-bars-staggered");
+        });
+      });
+
+
+      /* ==========================================================================
+         5. SCROLL REVEAL ANIMATION (Custom IntersectionObserver)
+         ========================================================================== */
+      const revealElements = document.querySelectorAll(".reveal-element, .section-title, .section-subtitle");
+      
+      const revealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("revealed");
+            observer.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px"
+      });
+
+      revealElements.forEach(el => revealObserver.observe(el));
+
+
+      /* ==========================================================================
+         6. GALLERY LIGHTBOX TRIGGERS
+         ========================================================================== */
+      const galleryItems = document.querySelectorAll(".gallery-item");
+      const lightboxModal = document.getElementById("lightbox-modal");
+      const lightboxImg = document.getElementById("lightbox-img");
+      const lightboxCloseBtn = document.getElementById("lightbox-close-btn");
+      const lightboxPrevBtn = document.getElementById("lightbox-prev-btn");
+      const lightboxNextBtn = document.getElementById("lightbox-next-btn");
+      
+      let currentLightboxIndex = 0;
+
+      galleryItems.forEach((item, index) => {
+        item.addEventListener("click", () => {
+          openLightbox(index);
+        });
+      });
+
+      function openLightbox(index) {
+        currentLightboxIndex = index;
+        updateLightboxContent();
+        lightboxModal.classList.add("active");
+        document.body.style.overflow = "hidden"; // Prevent background scroll
+      }
+
+      function closeLightbox() {
+        lightboxModal.classList.remove("active");
+        document.body.style.overflow = "";
+      }
+
+      function updateLightboxContent() {
+        const selectedItem = galleryItems[currentLightboxIndex];
+        const src = selectedItem.getAttribute("data-src");
+        
+        if (src === "fallback") {
+          const indexNum = currentLightboxIndex + 1;
+          lightboxImg.style.display = "none";
+          
+          let fallbackCard = document.getElementById("lightbox-fallback-card");
+          if (!fallbackCard) {
+            fallbackCard = document.createElement("div");
+            fallbackCard.id = "lightbox-fallback-card";
+            lightboxImg.parentNode.appendChild(fallbackCard);
+          }
+          fallbackCard.style.display = "flex";
+          fallbackCard.style.width = "80vw";
+          fallbackCard.style.maxWidth = "450px";
+          fallbackCard.style.aspectRatio = "3/4";
+          fallbackCard.style.background = "linear-gradient(135deg, #FEF9E7, #D4A5B8, #9CAEC0)";
+          fallbackCard.style.borderRadius = "12px";
+          fallbackCard.style.justifyContent = "center";
+          fallbackCard.style.alignItems = "center";
+          fallbackCard.style.flexDirection = "column";
+          fallbackCard.style.color = "#2C2C2C";
+          fallbackCard.style.fontFamily = "var(--font-cursive)";
+          fallbackCard.style.fontSize = "2.8rem";
+          fallbackCard.innerHTML = `<i class="fa-solid fa-leaf" style="font-size: 3.5rem; color:#C5A880; margin-bottom: 1.5rem;"></i>Aiyanna's Debut<span style="font-family:var(--font-sans); font-size:1rem; margin-top:10px; font-weight:300; opacity:0.8; letter-spacing: 0.1em; text-transform:uppercase;">Bloom ${indexNum}</span>`;
+        } else {
+          const fallbackCard = document.getElementById("lightbox-fallback-card");
+          if (fallbackCard) fallbackCard.style.display = "none";
+          
+          lightboxImg.style.display = "block";
+          lightboxImg.src = src;
+        }
+      }
+
+      lightboxCloseBtn.addEventListener("click", closeLightbox);
+      
+      lightboxPrevBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        currentLightboxIndex = (currentLightboxIndex - 1 + galleryItems.length) % galleryItems.length;
+        updateLightboxContent();
+      });
+
+      lightboxNextBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        currentLightboxIndex = (currentLightboxIndex + 1) % galleryItems.length;
+        updateLightboxContent();
+      });
+
+      // Close modal on outside click
+      lightboxModal.addEventListener("click", (e) => {
+        if (e.target === lightboxModal || e.target.classList.contains("lightbox-content")) {
+          closeLightbox();
+        }
+      });
+
+      // Keyboard support for Lightbox
+      document.addEventListener("keydown", (e) => {
+        if (!lightboxModal.classList.contains("active")) return;
+        if (e.key === "Escape") closeLightbox();
+        if (e.key === "ArrowLeft") lightboxPrevBtn.click();
+        if (e.key === "ArrowRight") lightboxNextBtn.click();
+      });
+
+
+      /* ==========================================================================
+         7. VENUE IMAGE CAROUSEL SLIDER
+         ========================================================================== */
+      const venueSlides = document.querySelectorAll(".venue-slide");
+      const venueDotsContainer = document.getElementById("venue-dots");
+      const venuePrevBtn = document.getElementById("venue-prev-btn");
+      const venueNextBtn = document.getElementById("venue-next-btn");
+      
+      let currentVenueIndex = 0;
+
+      // Populate dots based on slides already present in HTML
+      venueSlides.forEach((slide, index) => {
+        const dot = document.createElement("button");
+        dot.classList.add("venue-dot");
+        if (index === 0) dot.classList.add("active");
+        dot.setAttribute("aria-label", `Go to venue slide ${index + 1}`);
+        dot.addEventListener("click", () => showVenueSlide(index));
+        venueDotsContainer.appendChild(dot);
+      });
+
+      function showVenueSlide(index) {
+        if (!venueSlides.length) return;
+        
+        venueSlides[currentVenueIndex].classList.remove("active");
+        venueDotsContainer.children[currentVenueIndex].classList.remove("active");
+        
+        currentVenueIndex = (index + venueSlides.length) % venueSlides.length;
+        
+        venueSlides[currentVenueIndex].classList.add("active");
+        venueDotsContainer.children[currentVenueIndex].classList.add("active");
+      }
+
+      venuePrevBtn.addEventListener("click", () => {
+        showVenueSlide(currentVenueIndex - 1);
+      });
+
+      venueNextBtn.addEventListener("click", () => {
+        showVenueSlide(currentVenueIndex + 1);
+      });
+
+
+      /* ==========================================================================
+         8. ACCORDION LOGIC FOR 18 TRADITIONS
+         ========================================================================== */
+      const accordionItems = document.querySelectorAll(".accordion-item");
+
+      accordionItems.forEach(item => {
+        const headerBtn = item.querySelector(".accordion-header");
+        const content = item.querySelector(".accordion-content");
+
+        headerBtn.addEventListener("click", () => {
+          const isActive = item.classList.contains("active");
+
+          // Collapse all items first for a premium single-open behavior
+          accordionItems.forEach(otherItem => {
+            otherItem.classList.remove("active");
+            otherItem.querySelector(".accordion-content").style.maxHeight = null;
+            otherItem.querySelector(".accordion-header").setAttribute("aria-expanded", "false");
+          });
+
+          // If it wasn't active, expand it
+          if (!isActive) {
+            item.classList.add("active");
+            headerBtn.setAttribute("aria-expanded", "true");
+            
+            // Calculate scroll height including padding
+            content.style.maxHeight = content.scrollHeight + "px";
+          }
+        });
+      });
+
+
+      /* ==========================================================================
+         9. RSVP FORM SUBMISSION & VALIDATION
+         ========================================================================== */
+      const rsvpForm = document.getElementById("rsvp-form");
+      const successView = document.getElementById("rsvp-success-view");
+
+      const guestNameInput = document.getElementById("guest-name");
+      const guestPhoneInput = document.getElementById("guest-phone");
+      const guestAttendInput = document.getElementById("guest-attendance");
+
+      function validateInput(inputElement, groupElementId) {
+        const group = document.getElementById(groupElementId);
+        if (!inputElement.value.trim()) {
+          group.classList.add("error");
+          return false;
+        } else {
+          group.classList.remove("error");
+          return true;
+        }
+      }
+
+      rsvpForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        const isNameValid = validateInput(guestNameInput, "group-name");
+        const isPhoneValid = validateInput(guestPhoneInput, "group-phone");
+        const isAttendValid = validateInput(guestAttendInput, "group-attend");
+
+        if (isNameValid && isPhoneValid && isAttendValid) {
+          // Hide Form with fade transition
+          rsvpForm.style.opacity = "0";
+          setTimeout(() => {
+            rsvpForm.style.display = "none";
+            
+            // Personalize the success screen details
+            const isAttending = guestAttendInput.value === "yes";
+            const successMsg = document.getElementById("success-msg");
+            
+            if (isAttending) {
+              successMsg.innerHTML = `Dearest <strong>${guestNameInput.value}</strong>, your response has been successfully sent! We are absolutely thrilled to celebrate this magical milestone with you. See you at the garden!`;
+            } else {
+              successMsg.innerHTML = `Dearest <strong>${guestNameInput.value}</strong>, thank you for letting us know. We are sad that you cannot make it, but we truly appreciate your warm wishes as Aiyanna celebrates her 18th birthday.`;
+            }
+            
+            successView.style.display = "block";
+          }, 400);
+        }
+      });
+
+      // Clear validation errors on typing
+      guestNameInput.addEventListener("input", () => document.getElementById("group-name").classList.remove("error"));
+      guestPhoneInput.addEventListener("input", () => document.getElementById("group-phone").classList.remove("error"));
+      guestAttendInput.addEventListener("change", () => document.getElementById("group-attend").classList.remove("error"));
+
+    });
+  </script>
+</body>
+</html>
